@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* Light mode background */
+    --foreground: 240 10% 3.9%; /* Light mode text */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%; /* Default border, can be overridden by components */
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+    --radius: 0.5rem;
+    /* Notion-inspired specific colors */
+    --app-bg: 240 6% 96%; /* Light gray app background */
+    --sidebar-bg: 240 3% 98%; /* Slightly off-white sidebar */
+    --sidebar-border-color: 240 5% 90%;
+    --editor-bg: 0 0% 100%; /* White editor background */
+    --text-default: 240 10% 20%; /* Darker text for readability */
+    --text-muted: 240 5% 45%;
+    --text-placeholder: 240 4% 65%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%; /* Dark mode background */
+    --foreground: 0 0% 98%; /* Dark mode text */
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    /* Notion-inspired specific colors - Dark */
+    --app-bg: 240 6% 10%; /* Dark app background */
+    --sidebar-bg: 240 5% 13%; /* Darker sidebar */
+    --sidebar-border-color: 240 4% 20%;
+    --editor-bg: 240 6% 15%; /* Slightly lighter dark for editor */
+    --text-default: 0 0% 90%;
+    --text-muted: 240 3% 60%;
+    --text-placeholder: 240 2% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-white text-neutral-800;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar for a cleaner look */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-neutral-100 dark:bg-neutral-800;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-300 dark:bg-neutral-600 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-400 dark:bg-neutral-500;
+  }
+
+  /* Update component variables to use Notion-inspired colors */
+  .bg-neutral-50 { background-color: hsl(var(--sidebar-bg)); }
+  .border-neutral-200 { border-color: hsl(var(--sidebar-border-color)); }
+  .text-neutral-700 { color: hsl(var(--text-default)); }
+  .text-neutral-500 { color: hsl(var(--text-muted)); }
+  .text-neutral-600 { color: hsl(var(--text-default)); }
+  .hover\:bg-neutral-100:hover { background-color: hsl(var(--accent)); }
+  .bg-neutral-100 { background-color: hsl(var(--app-bg)); }
+  .bg-white { background-color: hsl(var(--editor-bg)); }
+
+  .dark .bg-neutral-50 { background-color: hsl(var(--sidebar-bg)); }
+  .dark .border-neutral-200 { border-color: hsl(var(--sidebar-border-color)); }
+  .dark .text-neutral-700 { color: hsl(var(--text-default)); }
+  .dark .text-neutral-500 { color: hsl(var(--text-muted)); }
+  .dark .text-neutral-600 { color: hsl(var(--text-default)); }
+  .dark .hover\:bg-neutral-100:hover { background-color: hsl(var(--accent)); }
+  .dark .bg-neutral-100 { background-color: hsl(var(--app-bg)); }
+  .dark .bg-white { background-color: hsl(var(--editor-bg)); }
+
+  /* Ensure inputs and textareas use the theme colors */
+  input, textarea {
+    color: hsl(var(--text-default));
+    background-color: transparent; /* Or specific input background if needed */
+  }
+  input::placeholder, textarea::placeholder {
+    color: hsl(var(--text-placeholder));
+  }
+}
